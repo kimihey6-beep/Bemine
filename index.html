@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Nurnisa A'ina Binti Jumadi</title>
+  <title>For Nurnisa A’ina Binti Jumadi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -18,6 +18,7 @@
       justify-content: center;
       align-items: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #333333;
       background:
         radial-gradient(circle at top left, #ffe6f2 0, transparent 55%),
         radial-gradient(circle at bottom right, #e3f2ff 0, transparent 55%),
@@ -70,13 +71,15 @@
       font-size: 1.6rem;
       text-align: center;
       margin-bottom: 6px;
+      color: #c63f70;
     }
 
     .subtitle {
       text-align: center;
       font-size: 0.9rem;
-      opacity: 0.8;
+      opacity: 0.9;
       margin-bottom: 18px;
+      color: #7b3f7c;
     }
 
     .trademark {
@@ -85,6 +88,7 @@
       font-size: 0.95rem;
       margin: 12px auto 16px;
       max-width: 90%;
+      color: #c15886;
     }
 
     .letter {
@@ -96,19 +100,28 @@
       overflow-y: auto;
       line-height: 1.5;
       font-size: 0.95rem;
-      border: 1px solid rgba(0, 0, 0, 0.14); /* lebih jelas */
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .letter p {
+      color: #333333;
     }
 
     .letter p + p {
       margin-top: 10px;
     }
 
+    .letter strong {
+      color: #b23b63;
+    }
+
     .scroll-hint {
       text-align: center;
       font-size: 0.78rem;
-      opacity: 0.7;
+      opacity: 0.85;
       margin-bottom: 14px;
+      color: #a56a8c;
     }
 
     .question {
@@ -117,6 +130,7 @@
       font-weight: 600;
       font-size: 1rem;
       animation: questionPulse 2.8s ease-in-out infinite;
+      color: #b23b63;
     }
 
     .buttons {
@@ -139,7 +153,7 @@
       background: #7cc8a4;
       color: #103424;
       box-shadow: 0 4px 12px rgba(90, 180, 130, 0.4);
-      animation: yesPulse 3s ease-in-out infinite; /* hint tekan yes */
+      animation: yesPulse 3s ease-in-out infinite;
     }
 
     #yesBtn:hover {
@@ -191,6 +205,7 @@
       animation: floatUp 9s linear infinite;
       user-select: none;
       pointer-events: none;
+      color: #ff6b9c;
     }
 
     .heart.h1 { left: 8%;  bottom: -20px; animation-delay: 0s; }
@@ -201,7 +216,7 @@
     #rainOverlay {
       position: fixed;
       inset: 0;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -220,7 +235,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 800;
       color: #d94873;
       text-align: center;
@@ -321,6 +336,7 @@
 
     .music-text {
       font-size: 0.85rem;
+      color: #6b3e7a;
     }
 
     .music-toggle {
@@ -377,7 +393,7 @@
   </div>
 
   <div class="container">
-    <h1>Kepada Nurnisa Aina Binti Jumadi 🌸</h1>
+    <h1>Kepada Nurnisa A’ina Binti Jumadi 🌸</h1>
     <div class="subtitle">
       From someone who loves you, and keeps falling for you a little more every second.
     </div>
@@ -411,11 +427,11 @@
 
       <p>Andai kata perasaan Nisa berkata lain, aku akan hormat, dan aku akan sedaya upaya buang rasa cinta ni. Tapi hang tetap akan jadi kawan terbaik aku dan kita akan berkawan selamanya, insya-Allah. Jangan pula tiba-tiba tak nak kawan aku dah.</p>
 
-      <p>So, Nurnisa Aina binti Jumadi, aku sangat suka hang. Aku betul-betul nak meneruskan kehidupan aku selepas ni dengan hang. Aku boleh tunggu bila-bila saja hang ready. Aku janji aku akan jaga hang sebaiknya. Aku takkan biarkan hang terluka.</p>
+      <p>So, Nurnisa A’ina binti Jumadi, aku sangat suka hang. Aku betul-betul nak meneruskan kehidupan aku selepas ni dengan hang. Aku boleh tunggu bila-bila saja hang ready. Aku janji aku akan jaga hang sebaiknya. Aku takkan biarkan hang terluka.</p>
 
       <p>Aku sangat suka senyuman hang. Jadi aku janji aku akan sedaya upaya kekalkan senyuman di bibir hang. Kalau hang menangis pun, aku nak pastikan itu adalah tangisan kerana bahagia, bukan kerana terluka.</p>
 
-      <p style="font-style: italic;">
+      <p style="font-style: italic; color:#b85a82;">
         Before this, I only admired you from afar; now I want to be with you to complete half of my deen.
       </p>
 
@@ -457,6 +473,14 @@
     const answerText = document.getElementById('answerText');
     const rainOverlay = document.getElementById('rainOverlay');
 
+    const bgm = document.getElementById('bgm');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicLabel = document.getElementById('musicLabel');
+
+    let isPlaying = false;
+    let currentVolume = 0.5;   // volume asas
+    bgm.volume = currentVolume;
+
     const sweetTexts = [
       "Let's grow old together.",
       "Let's be happy together.",
@@ -488,18 +512,20 @@
         }
 
         span.style.left = Math.random() * 100 + 'vw';
-        span.style.animationDuration = (4 + Math.random() * 3).toFixed(2) + 's'; // 4–7s
-        span.style.animationDelay = (Math.random() * 1.8).toFixed(2) + 's';
+        // Perlahan: 7–11 saat
+        span.style.animationDuration = (7 + Math.random() * 4).toFixed(2) + 's';
+        // Delay 0–3.5s
+        span.style.animationDelay = (Math.random() * 3.5).toFixed(2) + 's';
 
         rainOverlay.appendChild(span);
       }
 
       rainOverlay.classList.add('show');
 
-      // hilangkan overlay selepas ~8s
+      // hilangkan overlay selepas ~15s
       setTimeout(() => {
         rainOverlay.classList.remove('show');
-      }, 8000);
+      }, 15000);
     }
 
     yesBtn.addEventListener('click', () => {
@@ -507,6 +533,10 @@
         "Alhamdulillah, let’s go halal and walk this life together.";
       answerText.classList.remove('no');
       answerText.classList.add('show', 'yes');
+
+      // Naikkan volume bila YES (rain)
+      currentVolume = 0.8;
+      bgm.volume = currentVolume;
 
       showRainLove();
     });
@@ -516,19 +546,19 @@
         "It’s okay, you’re still my favourite and the best ever friend. I’ll always be here as your kawan baik.";
       answerText.classList.remove('yes');
       answerText.classList.add('show', 'no');
+
+      // Rendahkan volume bila NO
+      currentVolume = 0.3;
+      bgm.volume = currentVolume;
     });
 
     // MUSIC TOGGLE
-    const bgm = document.getElementById('bgm');
-    const musicToggle = document.getElementById('musicToggle');
-    const musicLabel = document.getElementById('musicLabel');
-    let isPlaying = false;
-
     musicToggle.addEventListener('click', async () => {
       try {
         if (!isPlaying) {
           await bgm.play();
           isPlaying = true;
+          bgm.volume = currentVolume;
           musicLabel.textContent = "Music: ON";
         } else {
           bgm.pause();
