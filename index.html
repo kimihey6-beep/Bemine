@@ -18,7 +18,11 @@
       justify-content: center;
       align-items: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #fdeff9, #ecf9ff);
+      /* BACKGROUND: pastel lembut + subtle glow */
+      background:
+        radial-gradient(circle at top left, #ffe6f2 0, transparent 55%),
+        radial-gradient(circle at bottom right, #e3f2ff 0, transparent 55%),
+        linear-gradient(135deg, #fff7fb, #fdfbff);
       overflow: hidden;
     }
 
@@ -139,11 +143,11 @@
       font-weight: 500;
     }
 
-    /* Floating hearts */
+    /* Floating hearts – lembut sikit */
     .heart {
       position: absolute;
-      font-size: 18px;
-      opacity: 0.3;
+      font-size: 16px;
+      opacity: 0.25;
       animation: floatUp 9s linear infinite;
       user-select: none;
       pointer-events: none;
@@ -154,8 +158,8 @@
     .heart.h3 { right: 10%; bottom: -30px; animation-delay: 4s; }
 
     @keyframes floatUp {
-      0%   { transform: translateY(0) scale(1);   opacity: 0.3; }
-      50%  { transform: translateY(-120px) scale(1.2); opacity: 0.6; }
+      0%   { transform: translateY(0) scale(1);   opacity: 0.25; }
+      50%  { transform: translateY(-120px) scale(1.15); opacity: 0.5; }
       100% { transform: translateY(-230px) scale(1); opacity: 0; }
     }
 
@@ -293,11 +297,14 @@
         Before this, I only admired you from afar; now I want to be with you to complete half of my deen.
       </p>
 
-      <p><strong>Sudikah awak menjadi teman sehidup semati saya? Tak perlu reply terus. You can take your time.</strong></p>
+      <p><strong>
+        I don't just like you for now; I want you in every chapter ahead, all the way to our old age.
+        Will you be my forever?
+      </strong></p>
     </div>
 
     <div class="question">
-      Can you be mine?
+      Will you be mine?
     </div>
 
     <div class="buttons">
