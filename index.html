@@ -18,12 +18,41 @@
       justify-content: center;
       align-items: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      /* BACKGROUND: pastel lembut + subtle glow */
+      /* BACKGROUND: pastel lembut */
       background:
         radial-gradient(circle at top left, #ffe6f2 0, transparent 55%),
         radial-gradient(circle at bottom right, #e3f2ff 0, transparent 55%),
         linear-gradient(135deg, #fff7fb, #fdfbff);
       overflow: hidden;
+      position: relative;
+    }
+
+    /* BLOBS LEMBUT BELAKANG KAD */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.55;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .blob1 {
+      width: 220px;
+      height: 220px;
+      background: #ffd1e6;
+      top: -60px;
+      left: -40px;
+      animation: blobFloat1 14s ease-in-out infinite;
+    }
+
+    .blob2 {
+      width: 260px;
+      height: 260px;
+      background: #cde8ff;
+      bottom: -80px;
+      right: -50px;
+      animation: blobFloat2 18s ease-in-out infinite;
     }
 
     .container {
@@ -33,7 +62,9 @@
       padding: 28px 24px 40px;
       border-radius: 20px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-      animation: fadeIn 1.3s ease-in-out;
+      animation:
+        fadeIn 1.3s ease-in-out,
+        floatCard 7s ease-in-out infinite;
     }
 
     h1 {
@@ -101,11 +132,14 @@
       background: #7cc8a4;
       color: #103424;
       box-shadow: 0 4px 12px rgba(90, 180, 130, 0.4);
+      /* hint halus ajak tekan */
+      animation: yesPulse 3.5s ease-in-out infinite;
     }
 
     #yesBtn:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 16px rgba(90, 180, 130, 0.5);
+      animation: none; /* bila hover, bagi dia static */
     }
 
     #noBtn {
@@ -143,11 +177,11 @@
       font-weight: 500;
     }
 
-    /* Floating hearts – lembut sikit */
+    /* Floating hearts – lembut */
     .heart {
       position: absolute;
-      font-size: 16px;
-      opacity: 0.25;
+      font-size: 18px;
+      opacity: 0.35;
       animation: floatUp 9s linear infinite;
       user-select: none;
       pointer-events: none;
@@ -157,9 +191,27 @@
     .heart.h2 { left: 50%; bottom: -40px; animation-delay: 2s; }
     .heart.h3 { right: 10%; bottom: -30px; animation-delay: 4s; }
 
+    /* BIG HEART POPUP */
+    #bigHeart {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.4);
+      font-size: 90px;
+      color: #ff6b9c;
+      text-shadow: 0 0 18px rgba(255, 130, 170, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    #bigHeart.show {
+      animation: popHeart 1.1s ease-out forwards;
+    }
+
     @keyframes floatUp {
-      0%   { transform: translateY(0) scale(1);   opacity: 0.25; }
-      50%  { transform: translateY(-120px) scale(1.15); opacity: 0.5; }
+      0%   { transform: translateY(0) scale(1);   opacity: 0.3; }
+      50%  { transform: translateY(-120px) scale(1.15); opacity: 0.6; }
       100% { transform: translateY(-230px) scale(1); opacity: 0; }
     }
 
@@ -168,7 +220,17 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-6px); }
+    }
+
     @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.03); }
+    }
+
+    @keyframes yesPulse {
       0%, 100% { transform: scale(1); }
       50%      { transform: scale(1.03); }
     }
@@ -179,6 +241,23 @@
       50% { transform: translateX(3px); }
       75% { transform: translateX(-2px); }
       100%{ transform: translateX(0); }
+    }
+
+    @keyframes blobFloat1 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(18px,-10px) scale(1.05); }
+    }
+
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(-20px,14px) scale(1.07); }
+    }
+
+    @keyframes popHeart {
+      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+      25%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+      60%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
     }
 
     /* Scrollbar cantik sikit */
@@ -249,10 +328,17 @@
 </head>
 <body>
 
-  <!-- Floating hearts -->
+  <!-- BLOBS -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <!-- Floating hearts kecil -->
   <div class="heart h1">❤</div>
   <div class="heart h2">❤</div>
   <div class="heart h3">❤</div>
+
+  <!-- BIG HEART POPUP -->
+  <div id="bigHeart">❤</div>
 
   <div class="container">
     <h1>Kepada Nurnisa Aina Binti Jumadi 🌸</h1>
@@ -330,12 +416,19 @@
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
     const answerText = document.getElementById('answerText');
+    const bigHeart = document.getElementById('bigHeart');
 
     yesBtn.addEventListener('click', () => {
       answerText.textContent =
         "Alhamdulillah, let’s go halal and walk this life together.";
       answerText.classList.remove('no');
       answerText.classList.add('show', 'yes');
+
+      // trigger big heart popup
+      bigHeart.classList.remove('show');
+      // force reflow supaya animation boleh replay
+      void bigHeart.offsetWidth;
+      bigHeart.classList.add('show');
     });
 
     noBtn.addEventListener('click', () => {
