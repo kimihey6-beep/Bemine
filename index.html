@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Nurnisa Aina Binti Jumadi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #fdeff9, #ecf9ff);
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      max-width: 750px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 28px 24px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 1.3s ease-in-out;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 18px;
+    }
+
+    .trademark {
+      text-align: center;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin: 12px auto 16px;
+      max-width: 90%;
+    }
+
+    .letter {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 20px;
+      max-height: 280px;
+      overflow-y: auto;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .letter p + p {
+      margin-top: 10px;
+    }
+
+    .question {
+      text-align: center;
+      margin: 18px 0 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      animation: pulse 2.3s ease-in-out infinite;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    button {
+      padding: 9px 22px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    #yesBtn {
+      background: #7cc8a4;
+      color: #103424;
+      box-shadow: 0 4px 12px rgba(90, 180, 130, 0.4);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(90, 180, 130, 0.5);
+    }
+
+    #noBtn {
+      background: #ffd6e0;
+      color: #5b2134;
+      box-shadow: 0 4px 12px rgba(255, 140, 170, 0.4);
+    }
+
+    #noBtn:hover {
+      animation: shake 0.4s ease;
+    }
+
+    .answer {
+      text-align: center;
+      min-height: 32px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .answer.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .answer.yes {
+      color: #1f6b46;
+      font-weight: 600;
+    }
+
+    .answer.no {
+      color: #a03c5b;
+      font-weight: 500;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      opacity: 0.3;
+      animation: floatUp 9s linear infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .heart.h1 { left: 8%;  bottom: -20px; animation-delay: 0s; }
+    .heart.h2 { left: 50%; bottom: -40px; animation-delay: 2s; }
+    .heart.h3 { right: 10%; bottom: -30px; animation-delay: 4s; }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1);   opacity: 0.3; }
+      50%  { transform: translateY(-120px) scale(1.2); opacity: 0.6; }
+      100% { transform: translateY(-230px) scale(1); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.03); }
+    }
+
+    @keyframes shake {
+      0%  { transform: translateX(0); }
+      25% { transform: translateX(-3px); }
+      50% { transform: translateX(3px); }
+      75% { transform: translateX(-2px); }
+      100%{ transform: translateX(0); }
+    }
+
+    /* Scrollbar cantik sikit */
+    .letter::-webkit-scrollbar {
+      width: 6px;
+    }
+    .letter::-webkit-scrollbar-track {
+      background: #f7f7f7;
+      border-radius: 10px;
+    }
+    .letter::-webkit-scrollbar-thumb {
+      background: #f3c0d3;
+      border-radius: 10px;
+    }
+
+    /* MUSIC TOGGLE BUTTON */
+    .music-toggle {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: #fdf2ff;
+      color: #5a2a6f;
+      box-shadow: 0 2px 8px rgba(165, 115, 190, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .music-toggle span.icon {
+      font-size: 1rem;
+    }
+
+    .music-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(165, 115, 190, 0.45);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 16px;
+        padding: 26px 18px 30px;
+      }
+      h1 {
+        font-size: 1.35rem;
+      }
+      .letter {
+        max-height: 260px;
+      }
+      .music-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating hearts -->
+  <div class="heart h1">❤</div>
+  <div class="heart h2">❤</div>
+  <div class="heart h3">❤</div>
+
+  <div class="container">
+    <!-- BUTANG MUSIC -->
+    <button class="music-toggle" id="musicToggle">
+      <span class="icon">🎵</span>
+      <span id="musicLabel">Music: OFF</span>
+    </button>
+
+    <h1>Assalamualaikum, Nisa 🌸</h1>
+    <div class="subtitle">From someone who has quietly liked you since 2018</div>
+
+    <div class="trademark">
+      “Before this, I only admired you from afar; now I hope to be with you to complete half of my deen.”
+    </div>
+
+    <div class="letter">
+      <p>Assalamualaikum, Nisa.</p>
+
+      <p>
+        Aku sebenarnya nak tunggu birthday hang, tapi macam tak boleh tahan dah. So, Bismillah.
+      </p>
+
+      <p>
+        Walaupun hang dah banyak kali reject aku, aku still rasa aku belum betul-betul confess secara jelas.
+        Kali ni aku tak minta hang reject, tapi aku nak hang betul-betul pertimbang. Aku nak tamatkan zaman
+        bujang aku dengan hang.
+      </p>
+
+      <p>
+        Sejak diploma 2018 bulan Jun, first time aku nampak hang, aku dah impressed dengan rupa dan tingkah laku hang.
+        Lepas tu bila kita makin rapat, aku lagi suka cara hang, dunia hang dengan Aqid, semua tu buat aku rasa selesa.
+      </p>
+
+      <p>
+        Masa degree, aku cuba sangat untuk kekal sebagai kawan saja. Aku banyak kali sekat rasa cinta tu supaya hang
+        tak rasa tak selesa. Tapi jujur, lagi lama aku kenal hang, lagi kuat rasa sayang tu. Setiap senyuman, setiap
+        selfie yang hang hantar, betul-betul buat hati aku jatuh cinta.
+      </p>
+
+      <p>
+        Sebagai kawan, aku sangat hargai hang — kalau tak, dah lama aku bawa hati dan hilang. Apa pun jawapan hang nanti,
+        aku tetap nak kekalkan hang sebagai kawan terbaik aku, insya-Allah.
+      </p>
+
+      <p>
+        Cuma kali ni aku nak jujur: aku sangat suka hang, dan aku betul-betul nak teruskan hidup lepas ni dengan hang.
+        Aku sanggup tunggu bila saja hang ready. Aku janji aku akan jaga hang sebaik mungkin, dan aku akan cuba sedaya
+        upaya untuk kekalkan senyuman hang.
+      </p>
+
+      <p style="font-style: italic;">
+        Before this, I only admired you from afar; now I hope to be with you to complete half of my deen.
+      </p>
+
+      <p><strong>Sudikah Nurnisa Aina binti Jumadi menjadi teman sehidup semati aku?</strong></p>
+    </div>
+
+    <div class="question">
+      Can you be mine?
+    </div>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💍</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div id="answerText" class="answer"></div>
+  </div>
+
+  <!-- AUDIO: tukar nama fail kalau perlu -->
+  <audio id="bgm" src="langit-yang-sama.mp3" preload="auto" loop></audio>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const answerText = document.getElementById('answerText');
+
+    yesBtn.addEventListener('click', () => {
+      answerText.textContent =
+        "Alhamdulillah, let’s go halal and walk this life together.";
+      answerText.classList.remove('no');
+      answerText.classList.add('show', 'yes');
+    });
+
+    noBtn.addEventListener('click', () => {
+      answerText.textContent =
+        "It’s okay, you’re still my favourite and the best ever friend. I’ll always be here as your kawan baik.";
+      answerText.classList.remove('yes');
+      answerText.classList.add('show', 'no');
+    });
+
+    // MUSIC TOGGLE
+    const bgm = document.getElementById('bgm');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicLabel = document.getElementById('musicLabel');
+    let isPlaying = false;
+
+    musicToggle.addEventListener('click', async () => {
+      try {
+        if (!isPlaying) {
+          await bgm.play();
+          isPlaying = true;
+          musicLabel.textContent = "Music: ON";
+        } else {
+          bgm.pause();
+          isPlaying = false;
+          musicLabel.textContent = "Music: OFF";
+        }
+      } catch (e) {
+        console.log("Playback blocked or error:", e);
+      }
+    });
+  </script>
+</body>
+</html>
