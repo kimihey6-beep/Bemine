@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Nurnisa Aina Binti Jumadi</title>
+  <title>For Nurnisa A'ina Binti Jumadi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -88,19 +88,27 @@
     }
 
     .letter {
-      background: #fff;
+      background: #ffffff;
       border-radius: 16px;
       padding: 18px 16px;
-      margin-bottom: 20px;
+      margin-bottom: 8px;
       max-height: 280px;
       overflow-y: auto;
       line-height: 1.5;
       font-size: 0.95rem;
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.14); /* lebih jelas */
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
     }
 
     .letter p + p {
       margin-top: 10px;
+    }
+
+    .scroll-hint {
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.7;
+      margin-bottom: 14px;
     }
 
     .question {
@@ -131,7 +139,7 @@
       background: #7cc8a4;
       color: #103424;
       box-shadow: 0 4px 12px rgba(90, 180, 130, 0.4);
-      animation: yesPulse 3s ease-in-out infinite;
+      animation: yesPulse 3s ease-in-out infinite; /* hint tekan yes */
     }
 
     #yesBtn:hover {
@@ -175,7 +183,7 @@
       font-weight: 500;
     }
 
-    /* Floating hearts */
+    /* Floating hearts bawah */
     .heart {
       position: absolute;
       font-size: 20px;
@@ -189,22 +197,59 @@
     .heart.h2 { left: 50%; bottom: -40px; animation-delay: 2s; }
     .heart.h3 { right: 10%; bottom: -30px; animation-delay: 4s; }
 
-    /* BIG HEART POPUP */
-    #bigHeart {
+    /* RAIN OVERLAY */
+    #rainOverlay {
       position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) scale(0.4);
-      font-size: 110px;
-      color: #ff6b9c;
-      text-shadow: 0 0 20px rgba(255, 130, 170, 0.8);
+      inset: 0;
+      background: rgba(255, 255, 255, 0.85);
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      z-index: 50;
+      transition: opacity 0.4s ease;
+      z-index: 60;
+      overflow: hidden;
     }
 
-    #bigHeart.show {
-      animation: popHeart 1.2s ease-out forwards;
+    #rainOverlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .rain-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #d94873;
+      text-align: center;
+      text-shadow: 0 0 14px rgba(255, 140, 180, 0.8);
+      padding: 0 16px;
+    }
+
+    .rain-item {
+      position: absolute;
+      top: -10%;
+      font-size: 20px;
+      color: #ff6b9c;
+      animation-name: rainFall;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+      white-space: nowrap;
+      opacity: 0;
+    }
+
+    .rain-item.text {
+      font-size: 14px;
+      color: #7b3f7c;
+      font-weight: 500;
+    }
+
+    @keyframes rainFall {
+      0%   { transform: translateY(-10vh); opacity: 0; }
+      10%  { opacity: 1; }
+      100% { transform: translateY(110vh); opacity: 0; }
     }
 
     @keyframes floatUp {
@@ -249,13 +294,6 @@
     @keyframes blobFloat2 {
       0%, 100% { transform: translate(0,0) scale(1); }
       50%      { transform: translate(-26px,20px) scale(1.1); }
-    }
-
-    @keyframes popHeart {
-      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
-      20%  { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
-      60%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
     }
 
     .letter::-webkit-scrollbar {
@@ -328,13 +366,15 @@
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
 
-  <!-- Floating hearts -->
+  <!-- Floating hearts bawah -->
   <div class="heart h1">❤</div>
   <div class="heart h2">❤</div>
   <div class="heart h3">❤</div>
 
-  <!-- BIG HEART POPUP -->
-  <div id="bigHeart">❤</div>
+  <!-- RAIN OVERLAY -->
+  <div id="rainOverlay">
+    <div class="rain-message">Serious la, Nisa? Terima kasih!!!</div>
+  </div>
 
   <div class="container">
     <h1>Kepada Nurnisa Aina Binti Jumadi 🌸</h1>
@@ -347,7 +387,6 @@
     </div>
 
     <div class="letter">
-      <!-- surat kau sama macam sebelum ni -->
       <p>Assalamualaikum, Nisa. Aku sebenarnya nak tunggu birthday hang, tapi macam tak boleh tahan dah, haha. Bismillah.</p>
 
       <p>Walaupun hang dah banyak kali reject aku, aku still rasa aku belum betul-betul confess secara jelas. Sebelum ni aku siap request suruh hang reject. Kali ni, aku nak hang betul-betul pertimbangkan. Aku nak tamatkan zaman bujang aku dengan hang.</p>
@@ -386,6 +425,10 @@
       </strong></p>
     </div>
 
+    <div class="scroll-hint">
+      ⬇️ Slide / scroll dalam kotak ini untuk baca sampai habis.
+    </div>
+
     <div class="question">
       Will you be mine?
     </div>
@@ -412,7 +455,52 @@
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
     const answerText = document.getElementById('answerText');
-    const bigHeart = document.getElementById('bigHeart');
+    const rainOverlay = document.getElementById('rainOverlay');
+
+    const sweetTexts = [
+      "Let's grow old together.",
+      "Let's be happy together.",
+      "Let's walk this life hand in hand.",
+      "Always you, always us.",
+      "With you, everything feels right.",
+      "You and me, in shaa Allah, forever.",
+      "Your smile is my favourite view.",
+      "I choose you, again and again.",
+      "Let's chase every sunset together.",
+      "My heart feels at home with you."
+    ];
+
+    function showRainLove() {
+      // reset content, keep main message
+      rainOverlay.innerHTML = '<div class="rain-message">Serious la, Nisa? Terima kasih!!!</div>';
+
+      const total = 45; // jumlah item jatuh
+      for (let i = 0; i < total; i++) {
+        const span = document.createElement('span');
+        span.classList.add('rain-item');
+
+        const isText = Math.random() < 0.45; // lebih kurang separuh text
+        if (isText) {
+          span.textContent = sweetTexts[Math.floor(Math.random() * sweetTexts.length)];
+          span.classList.add('text');
+        } else {
+          span.textContent = '❤';
+        }
+
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = (4 + Math.random() * 3).toFixed(2) + 's'; // 4–7s
+        span.style.animationDelay = (Math.random() * 1.8).toFixed(2) + 's';
+
+        rainOverlay.appendChild(span);
+      }
+
+      rainOverlay.classList.add('show');
+
+      // hilangkan overlay selepas ~8s
+      setTimeout(() => {
+        rainOverlay.classList.remove('show');
+      }, 8000);
+    }
 
     yesBtn.addEventListener('click', () => {
       answerText.textContent =
@@ -420,10 +508,7 @@
       answerText.classList.remove('no');
       answerText.classList.add('show', 'yes');
 
-      // trigger big heart popup
-      bigHeart.classList.remove('show');
-      void bigHeart.offsetWidth; // reset animation
-      bigHeart.classList.add('show');
+      showRainLove();
     });
 
     noBtn.addEventListener('click', () => {
