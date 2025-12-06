@@ -67,6 +67,11 @@
         floatCard 6s ease-in-out infinite;
     }
 
+    /* Glow bila music ON */
+    .container.music-on {
+      box-shadow: 0 0 25px rgba(221, 140, 200, 0.55);
+    }
+
     h1 {
       font-size: 1.6rem;
       text-align: center;
@@ -241,6 +246,7 @@
       text-align: center;
       text-shadow: 0 0 14px rgba(255, 140, 180, 0.8);
       padding: 0 16px;
+      z-index: 2;
     }
 
     .rain-item {
@@ -253,12 +259,40 @@
       animation-fill-mode: forwards;
       white-space: nowrap;
       opacity: 0;
+      z-index: 1;
     }
 
     .rain-item.text {
       font-size: 14px;
       color: #7b3f7c;
       font-weight: 500;
+    }
+
+    /* Big heart belakang text masa YES */
+    .big-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: rgba(255, 105, 135, 0.45);
+      filter: blur(0.5px);
+      z-index: 1;
+      animation: popHeart 2s ease-out forwards;
+    }
+
+    @keyframes popHeart {
+      0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+      }
     }
 
     @keyframes rainFall {
@@ -372,6 +406,7 @@
       }
       .letter {
         max-height: 260px;
+        line-height: 1.45;
       }
     }
   </style>
@@ -427,7 +462,9 @@
 
       <p>Andai kata perasaan Nisa berkata lain, aku akan hormat, dan aku akan sedaya upaya buang rasa cinta ni. Tapi hang tetap akan jadi kawan terbaik aku dan kita akan berkawan selamanya, insya-Allah. Jangan pula tiba-tiba tak nak kawan aku dah.</p>
 
-      <p>So, Nurnisa A’ina binti Jumadi, aku sangat suka hang. Aku betul-betul nak meneruskan kehidupan aku selepas ni dengan hang. Aku boleh tunggu bila-bila saja hang ready. Aku janji aku akan jaga hang sebaiknya. Aku takkan biarkan hang terluka.</p>
+      <p>
+        So, <span style="color:#c63f70; font-weight:600;">Nurnisa A’ina binti Jumadi</span>, aku sangat suka hang. Aku betul-betul nak meneruskan kehidupan aku selepas ni dengan hang. Aku boleh tunggu bila-bila saja hang ready. Aku janji aku akan jaga hang sebaiknya. Aku takkan biarkan hang terluka.
+      </p>
 
       <p>Aku sangat suka senyuman hang. Jadi aku janji aku akan sedaya upaya kekalkan senyuman di bibir hang. Kalau hang menangis pun, aku nak pastikan itu adalah tangisan kerana bahagia, bukan kerana terluka.</p>
 
@@ -449,6 +486,11 @@
       Will you be mine?
     </div>
 
+    <!-- Hint lembut bawah soalan -->
+    <div style="text-align:center; font-size:0.8rem; color:#996187; margin-bottom:4px;">
+      (No matter what you choose, I’ll still be grateful for you.)
+    </div>
+
     <div class="buttons">
       <button id="yesBtn">Yes 💍</button>
       <button id="noBtn">No 🙈</button>
@@ -463,6 +505,11 @@
     </div>
 
     <div id="answerText" class="answer"></div>
+
+    <!-- Footer doa -->
+    <div style="text-align:center; font-size:0.78rem; margin-top:10px; color:#777;">
+      May Allah write the best story for us, whatever the answer is. 🤍
+    </div>
   </div>
 
   <audio id="bgm" src="langit-yang-sama.mp3" preload="auto" loop></audio>
@@ -476,6 +523,7 @@
     const bgm = document.getElementById('bgm');
     const musicToggle = document.getElementById('musicToggle');
     const musicLabel = document.getElementById('musicLabel');
+    const container = document.querySelector('.container');
 
     let isPlaying = false;
     let currentVolume = 0.5;   // volume asas
@@ -497,6 +545,19 @@
     function showRainLove() {
       // reset content, keep main message
       rainOverlay.innerHTML = '<div class="rain-message">Serious la, Nisa? Terima kasih!!!</div>';
+
+      // Big heart belakang text
+      const bigHeart = document.createElement('div');
+      bigHeart.classList.add('big-heart');
+      bigHeart.textContent = '❤';
+      rainOverlay.appendChild(bigHeart);
+
+      // Remove big heart lepas 2s
+      setTimeout(() => {
+        if (bigHeart.parentNode) {
+          bigHeart.parentNode.removeChild(bigHeart);
+        }
+      }, 2000);
 
       const total = 45; // jumlah item jatuh
       for (let i = 0; i < total; i++) {
@@ -560,10 +621,12 @@
           isPlaying = true;
           bgm.volume = currentVolume;
           musicLabel.textContent = "Music: ON";
+          container.classList.add('music-on');
         } else {
           bgm.pause();
           isPlaying = false;
           musicLabel.textContent = "Music: OFF";
+          container.classList.remove('music-on');
         }
       } catch (e) {
         console.log("Playback blocked or error:", e);
