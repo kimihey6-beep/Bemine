@@ -538,7 +538,9 @@
     const container = document.querySelector('.container');
 
     let isPlaying = false;
-    let currentVolume = 0.5;   // volume asas
+
+    // volume asas – sederhana dulu
+    let currentVolume = 0.4;
     bgm.volume = currentVolume;
 
     const sweetTexts = [
@@ -607,8 +609,8 @@
       answerText.classList.remove('no');
       answerText.classList.add('show', 'yes');
 
-      // Naikkan volume bila YES (rain)
-      currentVolume = 0.8;
+      // Lagu KUAT JELAS bila YES (max = 1.0)
+      currentVolume = 1.0;
       bgm.volume = currentVolume;
 
       showRainLove();
@@ -620,8 +622,8 @@
       answerText.classList.remove('yes');
       answerText.classList.add('show', 'no');
 
-      // Rendahkan volume bila NO
-      currentVolume = 0.3;
+      // Lagu pelan sikit bila NO (sangat rendah)
+      currentVolume = 0.1;
       bgm.volume = currentVolume;
     });
 
@@ -631,7 +633,7 @@
         if (!isPlaying) {
           await bgm.play();
           isPlaying = true;
-          bgm.volume = currentVolume;
+          bgm.volume = currentVolume; // guna volume semasa (0.4 / 1.0 / 0.1)
           musicLabel.textContent = "Music: ON";
           container.classList.add('music-on');
         } else {
