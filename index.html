@@ -18,7 +18,6 @@
       justify-content: center;
       align-items: center;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      /* BACKGROUND: pastel lembut */
       background:
         radial-gradient(circle at top left, #ffe6f2 0, transparent 55%),
         radial-gradient(circle at bottom right, #e3f2ff 0, transparent 55%),
@@ -27,7 +26,7 @@
       position: relative;
     }
 
-    /* BLOBS LEMBUT BELAKANG KAD */
+    /* BLOBS */
     .blob {
       position: absolute;
       border-radius: 50%;
@@ -64,7 +63,7 @@
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
       animation:
         fadeIn 1.3s ease-in-out,
-        floatCard 7s ease-in-out infinite;
+        floatCard 6s ease-in-out infinite;
     }
 
     h1 {
@@ -109,7 +108,7 @@
       margin: 18px 0 10px;
       font-weight: 600;
       font-size: 1rem;
-      animation: pulse 2.3s ease-in-out infinite;
+      animation: questionPulse 2.8s ease-in-out infinite;
     }
 
     .buttons {
@@ -132,14 +131,13 @@
       background: #7cc8a4;
       color: #103424;
       box-shadow: 0 4px 12px rgba(90, 180, 130, 0.4);
-      /* hint halus ajak tekan */
-      animation: yesPulse 3.5s ease-in-out infinite;
+      animation: yesPulse 3s ease-in-out infinite;
     }
 
     #yesBtn:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
       box-shadow: 0 6px 16px rgba(90, 180, 130, 0.5);
-      animation: none; /* bila hover, bagi dia static */
+      animation: none;
     }
 
     #noBtn {
@@ -177,11 +175,11 @@
       font-weight: 500;
     }
 
-    /* Floating hearts – lembut */
+    /* Floating hearts */
     .heart {
       position: absolute;
-      font-size: 18px;
-      opacity: 0.35;
+      font-size: 20px;
+      opacity: 0.45;
       animation: floatUp 9s linear infinite;
       user-select: none;
       pointer-events: none;
@@ -197,42 +195,42 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%) scale(0.4);
-      font-size: 90px;
+      font-size: 110px;
       color: #ff6b9c;
-      text-shadow: 0 0 18px rgba(255, 130, 170, 0.6);
+      text-shadow: 0 0 20px rgba(255, 130, 170, 0.8);
       opacity: 0;
       pointer-events: none;
       z-index: 50;
     }
 
     #bigHeart.show {
-      animation: popHeart 1.1s ease-out forwards;
+      animation: popHeart 1.2s ease-out forwards;
     }
 
     @keyframes floatUp {
       0%   { transform: translateY(0) scale(1);   opacity: 0.3; }
-      50%  { transform: translateY(-120px) scale(1.15); opacity: 0.6; }
-      100% { transform: translateY(-230px) scale(1); opacity: 0; }
+      50%  { transform: translateY(-130px) scale(1.18); opacity: 0.7; }
+      100% { transform: translateY(-260px) scale(1); opacity: 0; }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(14px); }
+      from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes floatCard {
       0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
+      50%      { transform: translateY(-12px); }
     }
 
-    @keyframes pulse {
+    @keyframes questionPulse {
       0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.03); }
+      50%      { transform: scale(1.05); }
     }
 
     @keyframes yesPulse {
       0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.03); }
+      50%      { transform: scale(1.08); }
     }
 
     @keyframes shake {
@@ -245,22 +243,21 @@
 
     @keyframes blobFloat1 {
       0%, 100% { transform: translate(0,0) scale(1); }
-      50%      { transform: translate(18px,-10px) scale(1.05); }
+      50%      { transform: translate(26px,-18px) scale(1.08); }
     }
 
     @keyframes blobFloat2 {
       0%, 100% { transform: translate(0,0) scale(1); }
-      50%      { transform: translate(-20px,14px) scale(1.07); }
+      50%      { transform: translate(-26px,20px) scale(1.1); }
     }
 
     @keyframes popHeart {
       0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
-      25%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+      20%  { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
       60%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
       100% { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
     }
 
-    /* Scrollbar cantik sikit */
     .letter::-webkit-scrollbar {
       width: 6px;
     }
@@ -273,7 +270,6 @@
       border-radius: 10px;
     }
 
-    /* MUSIC ROW + BUTTON */
     .music-row {
       display: flex;
       justify-content: center;
@@ -332,7 +328,7 @@
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
 
-  <!-- Floating hearts kecil -->
+  <!-- Floating hearts -->
   <div class="heart h1">❤</div>
   <div class="heart h2">❤</div>
   <div class="heart h3">❤</div>
@@ -351,6 +347,7 @@
     </div>
 
     <div class="letter">
+      <!-- surat kau sama macam sebelum ni -->
       <p>Assalamualaikum, Nisa. Aku sebenarnya nak tunggu birthday hang, tapi macam tak boleh tahan dah, haha. Bismillah.</p>
 
       <p>Walaupun hang dah banyak kali reject aku, aku still rasa aku belum betul-betul confess secara jelas. Sebelum ni aku siap request suruh hang reject. Kali ni, aku nak hang betul-betul pertimbangkan. Aku nak tamatkan zaman bujang aku dengan hang.</p>
@@ -409,7 +406,6 @@
     <div id="answerText" class="answer"></div>
   </div>
 
-  <!-- AUDIO: pastikan nama fail sama -->
   <audio id="bgm" src="langit-yang-sama.mp3" preload="auto" loop></audio>
 
   <script>
@@ -426,8 +422,7 @@
 
       // trigger big heart popup
       bigHeart.classList.remove('show');
-      // force reflow supaya animation boleh replay
-      void bigHeart.offsetWidth;
+      void bigHeart.offsetWidth; // reset animation
       bigHeart.classList.add('show');
     });
 
