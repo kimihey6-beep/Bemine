@@ -81,7 +81,7 @@
       display: flex;
       justify-content: center;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     button {
@@ -190,11 +190,23 @@
       border-radius: 10px;
     }
 
-    /* MUSIC TOGGLE BUTTON */
+    /* MUSIC ROW + BUTTON */
+    .music-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0 14px;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .music-text {
+      font-size: 0.85rem;
+    }
+
     .music-toggle {
-      position: absolute;
-      top: 12px;
-      right: 14px;
       padding: 6px 14px;
       border-radius: 999px;
       border: none;
@@ -228,12 +240,6 @@
       .letter {
         max-height: 260px;
       }
-      .music-toggle {
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        font-size: 0.75rem;
-      }
     }
   </style>
 </head>
@@ -245,59 +251,49 @@
   <div class="heart h3">❤</div>
 
   <div class="container">
-    <!-- BUTANG MUSIC -->
-    <button class="music-toggle" id="musicToggle">
-      <span class="icon">🎵</span>
-      <span id="musicLabel">Music: OFF</span>
-    </button>
-
-    <h1>Assalamualaikum, Nisa 🌸</h1>
-    <div class="subtitle">From someone who has quietly liked you since 2018</div>
+    <h1>Kepada Nurnisa Aina Binti Jumadi 🌸</h1>
+    <div class="subtitle">
+      From someone who loves you, and keeps falling for you a little more every second.
+    </div>
 
     <div class="trademark">
-      “Before this, I only admired you from afar; now I hope to be with you to complete half of my deen.”
+      “Before this, I only admired you from afar; now I want to be with you to complete half of my deen.”
     </div>
 
     <div class="letter">
-      <p>Assalamualaikum, Nisa.</p>
+      <p>Assalamualaikum, Nisa. Aku sebenarnya nak tunggu birthday hang, tapi macam tak boleh tahan dah, haha. Bismillah.</p>
 
-      <p>
-        Aku sebenarnya nak tunggu birthday hang, tapi macam tak boleh tahan dah. So, Bismillah.
-      </p>
+      <p>Walaupun hang dah banyak kali reject aku, aku still rasa aku belum betul-betul confess secara jelas. Sebelum ni aku siap request suruh hang reject. Kali ni, aku nak hang betul-betul pertimbangkan. Aku nak tamatkan zaman bujang aku dengan hang.</p>
 
-      <p>
-        Walaupun hang dah banyak kali reject aku, aku still rasa aku belum betul-betul confess secara jelas.
-        Kali ni aku tak minta hang reject, tapi aku nak hang betul-betul pertimbang. Aku nak tamatkan zaman
-        bujang aku dengan hang.
-      </p>
+      <p>Aku sangat-sangat suka hang. Sayang sebagai kawan tinggi, rasa cinta pun tinggi. Sangat-sangat tinggi. Sepanjang kita kenal, sepanjang kita berkawan, aku cuba sekat rasa cinta dan sayang tu. Aku cuba nak rasa sayang sebagai kawan saja, tapi cinta tu makin lama makin besar, day by day.</p>
 
-      <p>
-        Sejak diploma 2018 bulan Jun, first time aku nampak hang, aku dah impressed dengan rupa dan tingkah laku hang.
-        Lepas tu bila kita makin rapat, aku lagi suka cara hang, dunia hang dengan Aqid, semua tu buat aku rasa selesa.
-      </p>
+      <p>Pada awal kenal, aku jatuh suka dengan senyuman hang saja. Tapi hari demi hari, bila aku tengok muka hang pun aku jatuh cinta, haha. Sebab tu tiap kali kita chat, tiba-tiba hang hantar selfie, aku gabra. Sebab sumpah hati aku jadi rasa “samting”. Aku tak pernah suka orang sebesar aku suka hang.</p>
 
-      <p>
-        Masa degree, aku cuba sangat untuk kekal sebagai kawan saja. Aku banyak kali sekat rasa cinta tu supaya hang
-        tak rasa tak selesa. Tapi jujur, lagi lama aku kenal hang, lagi kuat rasa sayang tu. Setiap senyuman, setiap
-        selfie yang hang hantar, betul-betul buat hati aku jatuh cinta.
-      </p>
+      <p>Rasa cinta dan sayang aku dekat hang tu sampai satu tahap aku rasa ikhlas mencintai. Aku betul-betul nak tengok hang dengan orang yang hang suka dan hang bahagia. Ada rasa sakit, tapi rasa nak tengok hang bahagia tu lagi besar.</p>
 
-      <p>
-        Sebagai kawan, aku sangat hargai hang — kalau tak, dah lama aku bawa hati dan hilang. Apa pun jawapan hang nanti,
-        aku tetap nak kekalkan hang sebagai kawan terbaik aku, insya-Allah.
-      </p>
+      <p>Jadi untuk sekarang, aku rasa peluang ni besar untuk aku luahkan. Pengecut sangat aku kalau langsung tak grab peluang ni. Jangan risau, aku respect perasaan hang. Cuma aku ambil peluang ni untuk luahkan semua. Aku rasa aku belum pernah luahkan seikhlas ni.</p>
 
-      <p>
-        Cuma kali ni aku nak jujur: aku sangat suka hang, dan aku betul-betul nak teruskan hidup lepas ni dengan hang.
-        Aku sanggup tunggu bila saja hang ready. Aku janji aku akan jaga hang sebaik mungkin, dan aku akan cuba sedaya
-        upaya untuk kekalkan senyuman hang.
-      </p>
+      <p>Aku nak bagitau, aku sangat suka hang sejak diploma 2018 bulan Jun. First time tengok hang, aku dah impressed dengan rupa dan tingkah laku hang, tapi stop situ saja. Lepas tu bila hang banyak kacau aku masa dip, sumpah aku suka dengan perangai hang. Macam aku pernah cakap, aku suka tingkah hang dan Aqid, perangai korang yang dalam dunia korang tu.</p>
+
+      <p>Bila degree, aku happy gila bila hang approach aku. Memang aku nak sangat rasa berkawan dengan hang. Tapi yah, makin lama, rasa cinta tu aku tak dapat tipu. Hang punya look dah bagi aku good first impression dari awal, lepas tu perangai hang pula yang buat aku makin suka.</p>
+
+      <p>Masa U, aku banyak kali sekat semua rasa tu. Susah wooo nak sekat, hahaha. Rasa nak care lebih, tapi aku sekat sebab kena ingat status: kita kawan, aku takut hang tak selesa. Tapi not bad, aku rasa boleh juga aku kawal, haha.</p>
+
+      <p>Tapi semua perasaan ni jangan buat hang pertikai sayang aku sebagai kawan. Sebagai kawan pun, sayang aku dekat hang sangat tinggi. Sebab tu kita masih mampu berkawan sampai sekarang. Kalau tak, dah lama aku pergi membawa hati yang terluka, acewah.</p>
+
+      <p>Mungkin ini kali terakhir aku cakap dengan hang pasal perasaan cinta ni. Tak tahu lah kalau aku tiba-tiba confess lagi masa birthday hang, 🤣.</p>
+
+      <p>Andai kata perasaan Nisa berkata lain, aku akan hormat, dan aku akan sedaya upaya buang rasa cinta ni. Tapi hang tetap akan jadi kawan terbaik aku dan kita akan berkawan selamanya, insya-Allah. Jangan pula tiba-tiba tak nak kawan aku dah.</p>
+
+      <p>So, Nurnisa Aina binti Jumadi, aku sangat suka hang. Aku betul-betul nak meneruskan kehidupan aku selepas ni dengan hang. Aku boleh tunggu bila-bila saja hang ready. Aku janji aku akan jaga hang sebaiknya. Aku takkan biarkan hang terluka.</p>
+
+      <p>Aku sangat suka senyuman hang. Jadi aku janji aku akan sedaya upaya kekalkan senyuman di bibir hang. Kalau hang menangis pun, aku nak pastikan itu adalah tangisan kerana bahagia, bukan kerana terluka.</p>
 
       <p style="font-style: italic;">
-        Before this, I only admired you from afar; now I hope to be with you to complete half of my deen.
+        Before this, I only admired you from afar; now I want to be with you to complete half of my deen.
       </p>
 
-      <p><strong>Sudikah Nurnisa Aina binti Jumadi menjadi teman sehidup semati aku?</strong></p>
+      <p><strong>Sudikah awak menjadi teman sehidup semati saya? Tak perlu reply terus. You can take your time.</strong></p>
     </div>
 
     <div class="question">
@@ -309,10 +305,18 @@
       <button id="noBtn">No 🙈</button>
     </div>
 
+    <div class="music-row">
+      <span class="music-text">👉🏻 Tekan sini kalau nak membaca sambil dengar lagu:</span>
+      <button class="music-toggle" id="musicToggle">
+        <span class="icon">🎵</span>
+        <span id="musicLabel">Music: OFF</span>
+      </button>
+    </div>
+
     <div id="answerText" class="answer"></div>
   </div>
 
-  <!-- AUDIO: tukar nama fail kalau perlu -->
+  <!-- AUDIO: pastikan nama fail sama -->
   <audio id="bgm" src="langit-yang-sama.mp3" preload="auto" loop></audio>
 
   <script>
