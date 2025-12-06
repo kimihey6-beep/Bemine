@@ -67,7 +67,6 @@
         floatCard 6s ease-in-out infinite;
     }
 
-    /* Glow bila music ON */
     .container.music-on {
       box-shadow: 0 0 25px rgba(221, 140, 200, 0.55);
     }
@@ -76,16 +75,16 @@
       font-size: 1.6rem;
       text-align: center;
       margin-bottom: 6px;
-      color: #b0436b; /* warna "Kepada" */
+      color: #b0436b;
     }
 
     .name-highlight {
-      color: #e05686;   /* satu warna khas untuk semua nama Nisa */
+      color: #e05686;
       font-weight: 700;
     }
 
     .love-word {
-      color: #e97aa7;   /* warna khas untuk cinta/sayang/kawan/bahagia/senyuman/ayat penting */
+      color: #e97aa7;
       font-weight: 600;
     }
 
@@ -212,7 +211,6 @@
       font-weight: 500;
     }
 
-    /* Floating hearts bawah */
     .heart {
       position: absolute;
       font-size: 20px;
@@ -227,7 +225,6 @@
     .heart.h2 { left: 50%; bottom: -40px; animation-delay: 2s; }
     .heart.h3 { right: 10%; bottom: -30px; animation-delay: 4s; }
 
-    /* RAIN OVERLAY */
     #rainOverlay {
       position: fixed;
       inset: 0;
@@ -278,7 +275,6 @@
       font-weight: 500;
     }
 
-    /* Big heart belakang text masa YES */
     .big-heart {
       position: absolute;
       top: 50%;
@@ -423,16 +419,13 @@
 </head>
 <body>
 
-  <!-- BLOBS -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
 
-  <!-- Floating hearts bawah -->
   <div class="heart h1">❤</div>
   <div class="heart h2">❤</div>
   <div class="heart h3">❤</div>
 
-  <!-- RAIN OVERLAY -->
   <div id="rainOverlay">
     <div class="rain-message">Serious la, Nisa? Terima kasih!!!</div>
   </div>
@@ -480,6 +473,13 @@
 
       <p>Aku sangat suka <span class="love-word">senyuman</span> hang. Jadi aku janji aku akan sedaya upaya kekalkan <span class="love-word">senyuman</span> di bibir hang. Kalau hang menangis pun, aku nak pastikan itu adalah <span class="love-word">tangisan kerana bahagia</span>, bukan kerana terluka.</p>
 
+      <p>
+        Aku sebenarnya nak jadikan hang <span class="love-word">orang pertama yang aku ajak kahwin</span>, supaya aku tak ada rasa menyesal ke depan hari.
+        Kalau hati hang kata <span class="love-word">yes</span>, boleh hantar di WhatsApp <span class="love-word">once view</span> 👍🏻.
+        Kalau hati hang kata <span class="love-word">no</span>, hantar 👎🏻 pun tak apa.
+        Aku akan faham, dan kita tetap <span class="love-word">bff selamanya</span>. Hang boleh bagi jawapan bila hang dah ready.
+      </p>
+
       <p style="font-style: italic; color:#b85a82;">
         Before this, I only admired you from afar; now I want to be with you to <span class="love-word">complete half of my deen</span>.
       </p>
@@ -502,12 +502,6 @@
       (No matter what you choose, I’ll still be grateful for you.)
     </div>
 
-    <div style="text-align:center; font-size:0.8rem; color:#a55a7d; margin-bottom:8px;">
-      Kalau jawapan hang <span class="love-word">yes</span>, boleh hantar <span class="love-word">once view</span> 👍🏻 saja pun dah cukup untuk buat aku <span class="love-word">happy gila</span>.<br>
-      Kalau jawapan hang <span class="love-word">no</span>, hantar 👎🏻 pun tak apa.<br>
-      Aku akan faham, dan kita tetap <span class="love-word">bff</span> macam biasa.
-    </div>
-
     <div class="buttons">
       <button id="yesBtn">Yes 💍</button>
       <button id="noBtn">No 🙈</button>
@@ -523,7 +517,6 @@
 
     <div id="answerText" class="answer"></div>
 
-    <!-- Footer doa -->
     <div style="text-align:center; font-size:0.78rem; margin-top:10px; color:#777;">
       <span class="love-word">May Allah write the best story for us</span>, whatever the answer is. 🤍
     </div>
@@ -543,8 +536,6 @@
     const container = document.querySelector('.container');
 
     let isPlaying = false;
-
-    // volume asas – sederhana dulu
     let currentVolume = 0.4;
     bgm.volume = currentVolume;
 
@@ -562,28 +553,25 @@
     ];
 
     function showRainLove() {
-      // reset content, keep main message
       rainOverlay.innerHTML = '<div class="rain-message">Serious la, Nisa? Terima kasih!!!</div>';
 
-      // Big heart belakang text
       const bigHeart = document.createElement('div');
       bigHeart.classList.add('big-heart');
       bigHeart.textContent = '❤';
       rainOverlay.appendChild(bigHeart);
 
-      // Remove big heart lepas 2s
       setTimeout(() => {
         if (bigHeart.parentNode) {
           bigHeart.parentNode.removeChild(bigHeart);
         }
       }, 2000);
 
-      const total = 45; // jumlah item jatuh
+      const total = 45;
       for (let i = 0; i < total; i++) {
         const span = document.createElement('span');
         span.classList.add('rain-item');
 
-        const isText = Math.random() < 0.45; // lebih kurang separuh text
+        const isText = Math.random() < 0.45;
         if (isText) {
           span.textContent = sweetTexts[Math.floor(Math.random() * sweetTexts.length)];
           span.classList.add('text');
@@ -592,9 +580,7 @@
         }
 
         span.style.left = Math.random() * 100 + 'vw';
-        // Perlahan: 7–11 saat
         span.style.animationDuration = (7 + Math.random() * 4).toFixed(2) + 's';
-        // Delay 0–3.5s
         span.style.animationDelay = (Math.random() * 3.5).toFixed(2) + 's';
 
         rainOverlay.appendChild(span);
@@ -602,7 +588,6 @@
 
       rainOverlay.classList.add('show');
 
-      // hilangkan overlay selepas ~15s
       setTimeout(() => {
         rainOverlay.classList.remove('show');
       }, 15000);
@@ -614,7 +599,6 @@
       answerText.classList.remove('no');
       answerText.classList.add('show', 'yes');
 
-      // Lagu KUAT JELAS bila YES (max = 1.0)
       currentVolume = 1.0;
       bgm.volume = currentVolume;
 
@@ -627,18 +611,16 @@
       answerText.classList.remove('yes');
       answerText.classList.add('show', 'no');
 
-      // Lagu pelan sikit bila NO (sangat rendah)
       currentVolume = 0.1;
       bgm.volume = currentVolume;
     });
 
-    // MUSIC TOGGLE
     musicToggle.addEventListener('click', async () => {
       try {
         if (!isPlaying) {
           await bgm.play();
           isPlaying = true;
-          bgm.volume = currentVolume; // guna volume semasa (0.4 / 1.0 / 0.1)
+          bgm.volume = currentVolume;
           musicLabel.textContent = "Music: ON";
           container.classList.add('music-on');
         } else {
